@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.web.crypto.mapping.userCipherMapper">
+
+    <!-- 查询-->
+    <select id="getUser" parameterType="String"
+            resultType="com.ruoyi.web.crypto.Entity.userCipher"> <!-- 创建对应user实体类的位置 -->
+        select * from userinfo where userId=#{id}
+    </select>
+    <!--新增-->
+    <insert id="save" useGeneratedKeys="true" keyProperty="userId">
+        insert into userinfo (userId,userPrivateKey,blindedCertificateSignature) values
+        (#{userId},#{userPrivateKey},#{blindedCertificateSignature})
+    </insert>
+</mapper>
